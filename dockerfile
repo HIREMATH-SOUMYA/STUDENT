@@ -1,5 +1,10 @@
-#dockerfile
-from python:3.11
-workdir /grade1
-copy . .                
-cmd ["python","grade1.py"]
+FROM python:3.14
+
+WORKDIR /grade1
+
+COPY . .
+
+RUN pip install pytest
+
+# Run pytest AND generate report.xml
+CMD ["python","grade1"]
