@@ -1,10 +1,8 @@
-FROM python:3.14
-
-WORKDIR /grade1
-
+FROM python:3.13
+WORKDIR /STRUCT_ENQUIRY
 COPY . .
-
-RUN pip install pytest
-
-# Run pytest AND generate report.xml
-CMD ["python","grade1"]
+RUN pip install --no-cache-dir pytest
+# Run tests at build time (CI)
+RUN pytest
+# FIXED entrypoint (never replaced)
+ENTRYPOINT ["python", "grade1.py"]
