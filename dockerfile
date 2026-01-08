@@ -1,8 +1,11 @@
-FROM python:3.13
-WORKDIR /STRUCT_ENQUIRY
-COPY . .
-RUN pip install --no-cache-dir pytest
-# Run tests at build time (CI)
-RUN pytest
-# FIXED entrypoint (never replaced)
-ENTRYPOINT ["python", "grade1.py"]
+FROM python:3.13-slim
+
+WORKDIR /app
+
+COPY . /app
+
+# Install pytest
+RUN pip install pytest
+
+# Run tests first, then run main program
+CMD pytest -v && python grade1.
