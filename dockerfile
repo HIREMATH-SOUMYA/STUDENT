@@ -8,4 +8,4 @@ COPY . /app
 RUN pip install pytest
 
 # Run tests first, then run main program
-CMD pytest -v && python grade1.
+CMD pytest -v && python grade1.py
